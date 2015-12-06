@@ -11,7 +11,6 @@ function parse_value {
 
       -c | --config)
          config_file=$value
-         source "$config_file"
          echo "using configuration: $value"
          ;;
 
@@ -149,6 +148,7 @@ do
 done
 
 [ ! -f $config_file ] && echo "No configuration found $config_file" && show_help && exit 1 
+source "$config_file"
 
 validate_config_default
 
